@@ -48,6 +48,7 @@ public class Sample implements Tickable, Field {
 
             if(isAllPositionCorrect()){
                 player.event(Events.WIN);
+                player.getHero().die();
             }
         }
     }
@@ -116,8 +117,6 @@ public class Sample implements Tickable, Field {
             player.setHero(heros.get(0));
             players.add(player);
         }
-
-
     }
 
     public void remove(Player player) {

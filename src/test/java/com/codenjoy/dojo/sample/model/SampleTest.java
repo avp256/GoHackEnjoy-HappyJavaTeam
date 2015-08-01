@@ -78,6 +78,46 @@ public class SampleTest {
                 "******");
     }
 
+    @Test
+    public void newGameTest() {
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijk+*" +
+                "*mnol*" +
+                "******");
+
+        game.tick();
+        assertTrue(hero.isAlive());
+
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijk+*" +
+                "*mnol*" +
+                "******");
+
+        hero.down();
+        game.tick();
+
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
+
+        assertFalse(hero.isAlive());
+        game.newGame(player);
+//
+//        assertE("******" +
+//                "*abcd*" +
+//                "*efgh*" +
+//                "*ijk+*" +
+//                "*mnol*" +
+//                "******");
+    }
+
     //движение вверх
     @Test
     public void shouldMoveUp() {

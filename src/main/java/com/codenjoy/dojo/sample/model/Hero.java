@@ -105,6 +105,10 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         return alive;
     }
 
+    public void die() {
+        alive = false;
+    }
+
     @Override
     public Elements state(Player player, Object... alsoAtPoint) {
         return Elements.HERO;
