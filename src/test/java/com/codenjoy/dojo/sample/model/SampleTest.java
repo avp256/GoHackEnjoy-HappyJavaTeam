@@ -44,14 +44,14 @@ public class SampleTest {
 
     private void givenFl(String board) {
         LevelImpl level = new LevelImpl(board);
-        Hero hero = level.getHero().get(0);
+        //Hero hero = level.getHero().get(0);
 
         game = new Sample(level, dice);
         listener = mock(EventListener.class);
         player = new Player(listener);
         game.newGame(player);
-        player.hero = hero;
-        hero.init(game);
+//        player.hero = hero;
+//        hero.init(game);
         this.hero = game.getHeroes().get(0);
     }
 

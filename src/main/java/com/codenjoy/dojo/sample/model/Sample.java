@@ -18,6 +18,7 @@ public class Sample implements Tickable, Field {
 
     private List<Digit> digits;
     private List<Wall> walls;
+    List<Hero> heros;
 
     private final int size;
     private Dice dice;
@@ -28,8 +29,12 @@ public class Sample implements Tickable, Field {
         walls = level.getWalls();
         digits = level.getDigits();
         size = level.getSize();
+        heros = level.getHero();
+        for (Hero hero : heros) {
+            hero.init(this);
+        }
 
-        players = new LinkedList<Player>();
+        players = new LinkedList<>();
     }
 
     /**
@@ -37,10 +42,14 @@ public class Sample implements Tickable, Field {
      */
     @Override
     public void tick() {
-        for (Player player : players) {
-            Hero hero = player.getHero();
+        for (Hero hero : heros) {
             hero.tick();
         }
+
+//        for (Player player : players) {
+//            Hero hero = player.getHero();
+//            hero.tick();
+//        }
 
 //        for (Player player : players) {
 //            Hero hero = player.getHero();
@@ -98,17 +107,16 @@ public class Sample implements Tickable, Field {
     }
 
     public List<Hero> getHeroes() {
-        List<Hero> result = new ArrayList<Hero>(players.size());
-        for (Player player : players) {
-            result.add(player.getHero());
-        }
-        return result;
+        return heros;
     }
 
     public void newGame(Player player) {
         if (!players.contains(player)) {
+            player.setHero(heros.get(0));
             players.add(player);
         }
+
+
     }
 
     public void remove(Player player) {

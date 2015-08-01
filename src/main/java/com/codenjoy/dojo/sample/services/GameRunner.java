@@ -8,6 +8,11 @@ import com.codenjoy.dojo.services.settings.Parameter;
 import com.codenjoy.dojo.services.settings.Settings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 import static com.codenjoy.dojo.services.settings.SimpleParameter.v;
 
 /**
@@ -16,7 +21,7 @@ import static com.codenjoy.dojo.services.settings.SimpleParameter.v;
  */
 public class GameRunner implements GameType {
 
-    public final static boolean SINGLE = true;
+    public final static boolean SINGLE = false;
     private final Settings settings;
     private final Level level;
     private Sample game;
@@ -24,37 +29,39 @@ public class GameRunner implements GameType {
     public GameRunner() {
         settings = new SettingsImpl();
         new Scores(0, settings);
-        level = new LevelImpl(
-                "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼" +
-                "☼          $                 ☼" +
-                "☼                            ☼" +
-                "☼   $              $         ☼" +
-                "☼                       $    ☼" +
-                "☼  $                         ☼" +
-                "☼                            ☼" +
-                "☼                            ☼" +
-                "☼              $             ☼" +
-                "☼        $                   ☼" +
-                "☼                            ☼" +
-                "☼                            ☼" +
-                "☼ $                         $☼" +
-                "☼                            ☼" +
-                "☼              $             ☼" +
-                "☼                            ☼" +
-                "☼    $                       ☼" +
-                "☼                            ☼" +
-                "☼                       $    ☼" +
-                "☼                            ☼" +
-                "☼                            ☼" +
-                "☼                            ☼" +
-                "☼            $               ☼" +
-                "☼                            ☼" +
-                "☼                            ☼" +
-                "☼       $                $   ☼" +
-                "☼                            ☼" +
-                "☼       ☺        $           ☼" +
-                "☼                            ☼" +
-                "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼");
+        level = new LevelImpl(getRamdomMap());
+    }
+
+    private String getRamdomMap() {
+        String randomElements = getRandomElements();
+
+        return "******" +
+                "*"+randomElements.substring(0,4)+"*" +
+                "*"+randomElements.substring(4,8)+"*" +
+                "*"+randomElements.substring(8,12)+"*" +
+                "*"+randomElements.substring(12,16)+"*" +
+                "******";
+    }
+
+    private List<Elements> getRandomList() {
+        List<Elements> result = new LinkedList<>();
+        result.addAll(Arrays.asList(LevelImpl.DIGITS));
+        result.add(Elements.HERO);
+
+        Collections.shuffle(result);
+        return result;
+    }
+
+    private String getRandomElements() {
+        StringBuilder result = new StringBuilder();
+
+        List<Elements> randomElements = getRandomList();
+
+        for (int i = 0; i < randomElements.size(); i++) {
+            result.append(randomElements.get(i));
+        }
+
+        return result.toString();
     }
 
     private Sample newGame() {
