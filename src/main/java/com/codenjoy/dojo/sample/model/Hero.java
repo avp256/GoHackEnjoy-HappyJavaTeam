@@ -72,15 +72,17 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         if (!alive) return;
 
         if (direction != null) {
-            int newX = direction.changeX(x);
-            int newY = direction.changeY(y);
+            int newX = direction.changeX(getX());
+            int newY = direction.changeY(getY());
 
-            if (field.isBomb(newX, newY)) {
-                alive = false;
-                field.removeBomb(newX, newY);
-            }
+//            if (field.isBomb(newX, newY)) {
+//                alive = false;
+//                field.removeBomb(newX, newY);
+//            }
 
             if (!field.isBarrier(newX, newY)) {
+                Point digit = field.getDigit(newX, newY);
+                digit.move(getX(), getY());
                 move(newX, newY);
             }
         }

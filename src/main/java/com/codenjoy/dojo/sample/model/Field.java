@@ -9,6 +9,8 @@ public interface Field {
 
     boolean isBarrier(int x, int y);
 
+    Point getDigit(int x, int y);
+
     Point getFreeRandom();
 
     boolean isFree(int x, int y);

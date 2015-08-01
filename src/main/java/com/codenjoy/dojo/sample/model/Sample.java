@@ -47,22 +47,22 @@ public class Sample implements Tickable, Field {
 
             hero.tick();
 
-            if (gold.contains(hero)) {
-                gold.remove(hero);
-                player.event(Events.WIN);
-
-                Point pos = getFreeRandom();
-                gold.add(new Gold(pos.getX(), pos.getY()));
-            }
+//            if (gold.contains(hero)) {
+//                gold.remove(hero);
+//                player.event(Events.WIN);
+//
+//                Point pos = getFreeRandom();
+//                gold.add(new Gold(pos.getX(), pos.getY()));
+//            }
         }
 
-        for (Player player : players) {
-            Hero hero = player.getHero();
-
-            if (!hero.isAlive()) {
-                player.event(Events.LOOSE);
-            }
-        }
+//        for (Player player : players) {
+//            Hero hero = player.getHero();
+//
+//            if (!hero.isAlive()) {
+//                player.event(Events.LOOSE);
+//            }
+//        }
     }
 
     public int size() {
@@ -71,8 +71,20 @@ public class Sample implements Tickable, Field {
 
     @Override
     public boolean isBarrier(int x, int y) {
-        Point pt = PointImpl.pt(x, y);
-        return x > size - 1 || x < 0 || y < 0 || y > size - 1 || walls.contains(pt) || getHeroes().contains(pt);
+        return false;
+        // TODO
+//        Point pt = PointImpl.pt(x, y);
+//        return x > size - 1 || x < 0 || y < 0 || y > size - 1 || walls.contains(pt) || getHeroes().contains(pt);
+    }
+
+    @Override
+    public Point getDigit(int x, int y) {
+        for (Point point : digits) {
+            if (point.itsMe(x,y)) {
+                return point;
+            }
+        }
+        return null;
     }
 
     @Override

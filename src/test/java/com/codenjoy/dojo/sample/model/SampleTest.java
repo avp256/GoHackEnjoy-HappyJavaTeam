@@ -73,6 +73,21 @@ public class SampleTest {
                 "ijkl" +
                 "mno+");
     }
+    @Test
+    public void shouldMoveUp() {
+        givenFl("abcd" +
+                "efgh" +
+                "ijkl" +
+                "mno+");
+
+        hero.up();
+        game.tick();
+
+        assertE("abcd" +
+                "efgh" +
+                "ijk+" +
+                "mnol");
+    }
 
 
 
