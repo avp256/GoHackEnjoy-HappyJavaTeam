@@ -1,5 +1,6 @@
 package com.codenjoy.dojo.sample.services;
 
+import com.codenjoy.dojo.sample.model.Bonus;
 import com.codenjoy.dojo.services.PlayerScores;
 import com.codenjoy.dojo.services.settings.Settings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
@@ -15,10 +16,13 @@ import static junit.framework.Assert.assertEquals;
  * Time: 20:35
  */
 public class ScoresTest {
+    private static final int MOVE_COUNT = 2;
+    private static final int NUMBER = 5;
+
     private PlayerScores scores;
 
     private Settings settings;
-//    private Integer loosePenalty;
+    //    private Integer loosePenalty;
 //    private Integer winScore;
     private Integer bonusScore;
 
@@ -31,7 +35,7 @@ public class ScoresTest {
 //    }
 
     public void bonus() {
-        scores.event(Events.BONUS);
+        scores.event(new Bonus(MOVE_COUNT, NUMBER));
     }
 
     @Before
@@ -51,7 +55,7 @@ public class ScoresTest {
         bonus(); // + 100
         bonus(); // + 100
 
-        Assert.assertEquals(250 + bonusScore * 2, scores.getScore());
+        Assert.assertEquals(250 + 2 * bonusScore * NUMBER / MOVE_COUNT, scores.getScore());
     }
 
 //    @Test

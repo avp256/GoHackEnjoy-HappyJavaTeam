@@ -1,5 +1,6 @@
 package com.codenjoy.dojo.sample.services;
 
+import com.codenjoy.dojo.sample.model.Bonus;
 import com.codenjoy.dojo.services.PlayerScores;
 import com.codenjoy.dojo.services.settings.Parameter;
 import com.codenjoy.dojo.services.settings.Settings;
@@ -9,7 +10,7 @@ import com.codenjoy.dojo.services.settings.Settings;
  * Обычно хочется, чтобы константы очков не были захардкоджены, потому используй объект {@see Settings} для их хранения.
  */
 public class Scores implements PlayerScores {
-
+    private final Parameter<Integer> bonusScore;
     private final Parameter<Integer> winScore;
     private final Parameter<Integer> loosePenalty;
 
@@ -21,6 +22,7 @@ public class Scores implements PlayerScores {
         // вот тут мы на админке увидим два поля с подписями и возожностью редактировать значение по умолчанию
         winScore = settings.addEditBox("Win score").type(Integer.class).def(30);
         loosePenalty = settings.addEditBox("Loose penalty").type(Integer.class).def(100);
+        bonusScore = settings.addEditBox("Bonus score").type(Integer.class).def(100);
     }
 
     @Override
@@ -35,11 +37,15 @@ public class Scores implements PlayerScores {
 
     @Override
     public void event(Object event) {
-        if (event.equals(Events.WIN)) {
+        if (event instanceof Bonus) {
+            Bonus bonus = (Bonus) event;
+            score += bonusScore.getValue() * bonus.getNumber() / bonus.getMoveCount();
+        } else if (event.equals(Events.WIN)) {
             score += winScore.getValue();
         } else if (event.equals(Events.LOOSE)) {
             score -= loosePenalty.getValue();
         }
+
         score = Math.max(0, score);
     }
 }

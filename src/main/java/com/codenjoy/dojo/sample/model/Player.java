@@ -10,8 +10,6 @@ import com.codenjoy.dojo.services.Point;
 public class Player {
 
     private EventListener listener;
-    private int maxScore;
-    private int score;
     Hero hero;
 
     /**
@@ -19,20 +17,6 @@ public class Player {
      */
     public Player(EventListener listener) {
         this.listener = listener;
-        clearScore();
-    }
-
-    private void increaseScore() {
-        score = score + 1;
-        maxScore = Math.max(maxScore, score);
-    }
-
-    public int getMaxScore() {
-        return maxScore;
-    }
-
-    public int getScore() {
-        return score;
     }
 
     /**
@@ -40,23 +24,15 @@ public class Player {
      * @param event тип ивента
      */
     public void event(Events event) {
-        switch (event) {
-            case LOOSE: gameOver(); break;
-            case WIN: increaseScore(); break;
-        }
-
         if (listener != null) {
             listener.event(event);
         }
     }
 
-    private void gameOver() {
-        score = 0;
-    }
-
-    public void clearScore() {
-        score = 0;
-        maxScore = 0;
+    public void event(Bonus bonus) {
+        if (listener != null) {
+            listener.event(bonus);
+        }
     }
 
     public Hero getHero() {

@@ -90,7 +90,8 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
                 move(newX, newY);
 
                 if (new PositionHandler().isRightPosition(digit)) {
-                    player.event(Events.BONUS);
+                    // TODO
+                    player.event(new Bonus(1, 1));
                 }
             }
 

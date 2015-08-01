@@ -46,6 +46,7 @@ public class Sample implements Tickable, Field {
             hero.tick();
         }
 
+
 //        for (Player player : players) {
 //            Hero hero = player.getHero();
 //            hero.tick();

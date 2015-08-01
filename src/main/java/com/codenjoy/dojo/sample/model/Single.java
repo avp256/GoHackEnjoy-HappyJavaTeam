@@ -25,12 +25,14 @@ public class Single implements Game {
 
     @Override
     public int getMaxScore() {
-        return player.getMaxScore();
+        // don't use
+        return 0;
     }
 
     @Override
     public int getCurrentScore() {
-        return player.getScore();
+        // don't use
+        return 0;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class Single implements Game {
 
     @Override
     public void clearScore() {
-        player.clearScore();
+        // do nothing
     }
 
     @Override
