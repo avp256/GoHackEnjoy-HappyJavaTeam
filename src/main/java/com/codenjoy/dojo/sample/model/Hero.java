@@ -1,13 +1,19 @@
 package com.codenjoy.dojo.sample.model;
 
+import com.codenjoy.dojo.sample.services.Events;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.Point;
+
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Это реализация героя. Обрати внимание, что он имплементит {@see Joystick}, а значит может быть управляем фреймворком
  * Так же он имплементит {@see Tickable}, что значит - есть возможность его оповещать о каждом тике игры.
  */
 public class Hero extends PointImpl implements Joystick, Tickable, State<Elements, Player> {
-
+    private Player player;
     private Field field;
     private boolean alive;
     private Direction direction;
@@ -18,6 +24,10 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         alive = true;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     public Hero(Point xy) {
         super(xy);
         direction = null;
@@ -26,6 +36,7 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
 
     public void init(Field field) {
         this.field = field;
+
     }
 
     @Override
@@ -74,10 +85,15 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
             int newY = direction.changeY(getY());
 
             if (!field.isBarrier(newX, newY)) {
-                Point digit = field.getDigit(newX, newY);
+                Digit digit = field.getDigit(newX, newY);
                 digit.move(getX(), getY());
                 move(newX, newY);
+
+                if (new PositionHandler().isRightPosition(digit)) {
+                    player.event(Events.BONUS);
+                }
             }
+
         }
         direction = null;
     }

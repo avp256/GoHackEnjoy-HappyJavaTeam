@@ -71,8 +71,8 @@ public class Sample implements Tickable, Field {
     }
 
     @Override
-    public Point getDigit(int x, int y) {
-        for (Point point : digits) {
+    public Digit getDigit(int x, int y) {
+        for (Digit point : digits) {
             if (point.itsMe(x, y)) {
                 return point;
             }
