@@ -5,6 +5,7 @@ import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.Point;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import java.util.Map;
  * Так же он имплементит {@see Tickable}, что значит - есть возможность его оповещать о каждом тике игры.
  */
 public class Hero extends PointImpl implements Joystick, Tickable, State<Elements, Player> {
+
+    private int moveCount;
     private Player player;
     private Field field;
     private boolean alive;
@@ -22,6 +25,7 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         super(x, y);
         direction = null;
         alive = true;
+        moveCount = 1;
     }
 
     public void setPlayer(Player player) {
@@ -85,13 +89,15 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
             int newY = direction.changeY(getY());
 
             if (!field.isBarrier(newX, newY)) {
+                moveCount++;
                 Digit digit = field.getDigit(newX, newY);
                 digit.move(getX(), getY());
                 move(newX, newY);
 
                 if (new PositionHandler().isRightPosition(digit)) {
-                    // TODO
-                    player.event(new Bonus(1, 1));
+                    int number = 1 + Arrays.asList(LevelImpl.DIGITS).indexOf(digit);
+                    player.event(new Bonus(moveCount, number));
+                    moveCount = 1;
                 }
             }
 
