@@ -48,8 +48,16 @@ public class GameRunner implements GameType {
         result.addAll(Arrays.asList(LevelImpl.DIGITS));
         result.add(Elements.HERO);
 
-        Collections.shuffle(result);
+        do {
+            Collections.shuffle(result);
+        } while (!isSolvability(result));
+
         return result;
+    }
+
+    private boolean isSolvability(List<Elements> result) {
+        // TODO
+        return true;
     }
 
     private String getRandomElements() {
