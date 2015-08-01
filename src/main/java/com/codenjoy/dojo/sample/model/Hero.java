@@ -1,13 +1,9 @@
 package com.codenjoy.dojo.sample.model;
 
-import com.codenjoy.dojo.sample.services.Events;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.Point;
 
-import java.awt.*;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Это реализация героя. Обрати внимание, что он имплементит {@see Joystick}, а значит может быть управляем фреймворком
@@ -94,8 +90,8 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
                 digit.move(getX(), getY());
                 move(newX, newY);
 
-                if (new PositionHandler().isRightPosition(digit)) {
-                    int number = 1 + Arrays.asList(LevelImpl.DIGITS).indexOf(digit);
+                if (new DigitHandler().isRightPosition(digit)) {
+                    int number = 1 + Arrays.asList(DigitHandler.DIGITS).indexOf(digit);
                     player.event(new Bonus(moveCount, number));
                     moveCount = 1;
                 }

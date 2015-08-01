@@ -10,25 +10,6 @@ import java.util.List;
  * Полезный утилитный класс для получения объектов на поле из текстового вида.
  */
 public class LevelImpl implements Level {
-    public static final Elements[] DIGITS =
-            {
-                    Elements.A,
-                    Elements.B,
-                    Elements.C,
-                    Elements.D,
-                    Elements.E,
-                    Elements.F,
-                    Elements.G,
-                    Elements.H,
-                    Elements.I,
-                    Elements.J,
-                    Elements.K,
-                    Elements.L,
-                    Elements.M,
-                    Elements.N,
-                    Elements.O
-            };
-
     private final LengthToXY xy;
 
     private String map;
@@ -42,7 +23,7 @@ public class LevelImpl implements Level {
     public List<Digit> getDigits() {
         List<Digit> result = new LinkedList<Digit>();
 
-        for (Elements digit : DIGITS) {
+        for (Elements digit : DigitHandler.DIGITS) {
             for (Point pt : getPointsOf(digit)) {
                 result.add(new Digit(pt, digit));
             }

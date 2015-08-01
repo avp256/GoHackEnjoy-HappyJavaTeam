@@ -9,7 +9,26 @@ import java.util.Map;
 /**
  * Created by Administrator on 02.08.2015.
  */
-public class PositionHandler {
+public class DigitHandler {
+    public static final Elements[] DIGITS =
+            {
+                    Elements.A,
+                    Elements.B,
+                    Elements.C,
+                    Elements.D,
+                    Elements.E,
+                    Elements.F,
+                    Elements.G,
+                    Elements.H,
+                    Elements.I,
+                    Elements.J,
+                    Elements.K,
+                    Elements.L,
+                    Elements.M,
+                    Elements.N,
+                    Elements.O
+            };
+
     private static final Map<Elements, Point> CORRECT_POSITION = new HashMap<>();
 
     static {

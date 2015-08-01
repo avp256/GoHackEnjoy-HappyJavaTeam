@@ -44,7 +44,7 @@ public class Randomizer {
 
     private List<Elements> getRandomList() {
         List<Elements> result = new LinkedList<>();
-        result.addAll(Arrays.asList(LevelImpl.DIGITS));
+        result.addAll(Arrays.asList(DigitHandler.DIGITS));
         result.add(Elements.HERO);
 
         do {
