@@ -1,7 +1,7 @@
 package com.codenjoy.dojo.sample.services;
 
 import com.codenjoy.dojo.client.WebSocketRunner;
-import com.codenjoy.dojo.sample.client.ai.ApofigSolver;
+import com.codenjoy.dojo.sample.client.ai.FiveTeenSolver;
 import com.codenjoy.dojo.sample.model.*;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.settings.Parameter;
@@ -111,6 +111,6 @@ public class GameRunner implements GameType {
 
     @Override
     public void newAI(String aiName) {
-        ApofigSolver.start(aiName, WebSocketRunner.Host.REMOTE);
+        FiveTeenSolver.start(aiName, WebSocketRunner.Host.REMOTE);
     }
 }
