@@ -107,6 +107,37 @@ public class SampleTest {
                 "ijkl" +
                 "mno+");
     }
+    @Test
+    public void shouldMoveRight() {
+        givenFl("abcd" +
+                "efgh" +
+                "ijkl" +
+                "mn+o");
+
+        hero.right();
+        game.tick();
+
+        assertE("abcd" +
+                "efgh" +
+                "ijkl" +
+                "mno+");
+    }
+
+    @Test
+    public void shouldMoveLeft() {
+        givenFl("abcd" +
+                "efgh" +
+                "ijk+" +
+                "mnol");
+
+        hero.left();
+        game.tick();
+
+        assertE("abcd" +
+                "efgh" +
+                "ij+k" +
+                "mnol");
+    }
 
 
 
