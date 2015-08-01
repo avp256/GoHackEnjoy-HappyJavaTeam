@@ -1,5 +1,6 @@
 package com.codenjoy.dojo.sample.model;
 
+import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.PointImpl;
 import com.codenjoy.dojo.services.State;
 
@@ -9,7 +10,11 @@ import com.codenjoy.dojo.services.State;
 public class Digit extends PointImpl implements State<Elements, Player> {
 
     private Elements element;
+    public Digit(Point xy,Elements element){
+        super(xy);
+        this.element = element;
 
+    }
     public Digit(int x, int y ,Elements element) {
         super(x, y);
         this.element = element;

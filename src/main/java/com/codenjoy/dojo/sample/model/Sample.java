@@ -27,7 +27,7 @@ public class Sample implements Tickable, Field {
     private Dice dice;
 
     public Sample(Level level, Dice dice) {
-          digits = new LinkedList<Digit>();
+          digits = level.getDigits();
 
         this.dice = dice;
 //        walls = level.getWalls();
@@ -149,21 +149,21 @@ public class Sample implements Tickable, Field {
         if (!players.contains(player)) {
             players.add(player);
         }
-        digits.add(new Digit(0,3,Elements.A));
-        digits.add(new Digit(1,3,Elements.B));
-        digits.add(new Digit(2,3,Elements.C));
-        digits.add(new Digit(3,3,Elements.D));
-        digits.add(new Digit(0,2,Elements.E));
-        digits.add(new Digit(1,2,Elements.F));
-        digits.add(new Digit(2,2,Elements.G));
-        digits.add(new Digit(3,2,Elements.H));
-        digits.add(new Digit(0,1,Elements.I));
-        digits.add(new Digit(1,1,Elements.J));
-        digits.add(new Digit(2,1,Elements.K));
-        digits.add(new Digit(3,1,Elements.L));
-        digits.add(new Digit(0,0,Elements.M));
-        digits.add(new Digit(1,0,Elements.N));
-        digits.add(new Digit(2,0,Elements.O));
+//        digits.add(new Digit(0,3,Elements.A));
+//        digits.add(new Digit(1,3,Elements.B));
+//        digits.add(new Digit(2,3,Elements.C));
+//        digits.add(new Digit(3,3,Elements.D));
+//        digits.add(new Digit(0,2,Elements.E));
+//        digits.add(new Digit(1,2,Elements.F));
+//        digits.add(new Digit(2,2,Elements.G));
+//        digits.add(new Digit(3,2,Elements.H));
+//        digits.add(new Digit(0,1,Elements.I));
+//        digits.add(new Digit(1,1,Elements.J));
+//        digits.add(new Digit(2,1,Elements.K));
+//        digits.add(new Digit(3,1,Elements.L));
+//        digits.add(new Digit(0,0,Elements.M));
+//        digits.add(new Digit(1,0,Elements.N));
+//        digits.add(new Digit(2,0,Elements.O));
 
         player.newHero(this);
     }

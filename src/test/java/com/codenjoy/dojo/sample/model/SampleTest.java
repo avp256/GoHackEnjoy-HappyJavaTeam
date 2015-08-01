@@ -73,6 +73,8 @@ public class SampleTest {
                 "ijkl" +
                 "mno+");
     }
+
+    //движение вверх
     @Test
     public void shouldMoveUp() {
         givenFl("abcd" +
@@ -89,12 +91,29 @@ public class SampleTest {
                 "mnol");
     }
 
+    //движение вниз
+    @Test
+    public void shouldMoveDown() {
+        givenFl("abcd" +
+                "efgh" +
+                "ijk+" +
+                "mnol");
+
+        hero.down();
+        game.tick();
+
+        assertE("abcd" +
+                "efgh" +
+                "ijkl" +
+                "mno+");
+    }
 
 
 
 
 
-       // есть карта со мной
+
+    // есть карта со мной
 //    @Test
 //    public void shouldFieldAtStart() {
 //        givenFl("☼☼☼☼☼" +
