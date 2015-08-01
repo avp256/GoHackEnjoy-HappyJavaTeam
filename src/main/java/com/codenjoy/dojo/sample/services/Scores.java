@@ -42,8 +42,6 @@ public class Scores implements PlayerScores {
             score += bonusScore.getValue() * bonus.getNumber() / bonus.getMoveCount();
         } else if (event.equals(Events.WIN)) {
             score += winScore.getValue();
-        } else if (event.equals(Events.LOOSE)) {
-            score -= loosePenalty.getValue();
         }
 
         score = Math.max(0, score);

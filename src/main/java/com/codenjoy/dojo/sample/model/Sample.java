@@ -42,23 +42,23 @@ public class Sample implements Tickable, Field {
      */
     @Override
     public void tick() {
-        for (Hero hero : heros) {
+        for (Player player : players) {
+            Hero hero = player.getHero();
             hero.tick();
+
+            if(isAllPositionCorrect()){
+                player.event(Events.WIN);
+            }
         }
+    }
 
-
-//        for (Player player : players) {
-//            Hero hero = player.getHero();
-//            hero.tick();
-//        }
-
-//        for (Player player : players) {
-//            Hero hero = player.getHero();
-//
-//            if (!hero.isAlive()) {
-//                player.event(Events.LOOSE);
-//            }
-//        }
+    private boolean isAllPositionCorrect() {
+        for(Digit digit: digits){
+            if(!(new DigitHandler().isRightPosition(digit))){
+               return false;
+            }
+        }
+        return true;
     }
 
     public int size() {
