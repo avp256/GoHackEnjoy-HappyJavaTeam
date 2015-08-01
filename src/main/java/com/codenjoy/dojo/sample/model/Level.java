@@ -10,12 +10,12 @@ public interface Level {
     /**
      * @return Размер поля (обязательно квадратное)
      */
-    List<Digit> getDigits();
     int getSize();
-
-    List<Wall> getWalls();
 
     List<Hero> getHero();
 
-    List<Gold> getGold();
+    List<Digit> getDigits();
+
+    List<Wall> getWalls();
+
 }

@@ -19,7 +19,6 @@ public class Wall extends PointImpl implements State<Elements, Player> {
 
     @Override
     public Elements state(Player player, Object... alsoAtPoint) {
-        return null;
-        //return Elements.WALL;
+        return Elements.WALL;
     }
 }

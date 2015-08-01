@@ -63,80 +63,124 @@ public class SampleTest {
     // есть поле карта со мной
     @Test
     public void shouldFieldAtStart() {
-        givenFl("abcd" +
-                "efgh" +
-                "ijkl" +
-                "mno+");
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
 
-        assertE("abcd" +
-                "efgh" +
-                "ijkl" +
-                "mno+");
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
     }
 
     //движение вверх
     @Test
     public void shouldMoveUp() {
-        givenFl("abcd" +
-                "efgh" +
-                "ijkl" +
-                "mno+");
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
 
         hero.up();
         game.tick();
 
-        assertE("abcd" +
-                "efgh" +
-                "ijk+" +
-                "mnol");
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijk+*" +
+                "*mnol*" +
+                "******");
     }
 
     //движение вниз
     @Test
     public void shouldMoveDown() {
-        givenFl("abcd" +
-                "efgh" +
-                "ijk+" +
-                "mnol");
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijk+*" +
+                "*mnol*" +
+                "******");
 
         hero.down();
         game.tick();
 
-        assertE("abcd" +
-                "efgh" +
-                "ijkl" +
-                "mno+");
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
     }
+
+    //движение вправо
     @Test
     public void shouldMoveRight() {
-        givenFl("abcd" +
-                "efgh" +
-                "ijkl" +
-                "mn+o");
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*m+no*" +
+                "******");
 
         hero.right();
         game.tick();
 
-        assertE("abcd" +
-                "efgh" +
-                "ijkl" +
-                "mno+");
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mn+o*" +
+                "******");
     }
 
+    //движение влево
     @Test
     public void shouldMoveLeft() {
-        givenFl("abcd" +
-                "efgh" +
-                "ijk+" +
-                "mnol");
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
 
         hero.left();
         game.tick();
 
-        assertE("abcd" +
-                "efgh" +
-                "ij+k" +
-                "mnol");
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mn+o*" +
+                "******");
+    }
+
+    //в стену - нечего не делаем
+    @Test
+    public void shouldDoNothingWhenMoveToWall() {
+        givenFl("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
+
+        hero.right();
+        game.tick();
+
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******");
     }
 
 

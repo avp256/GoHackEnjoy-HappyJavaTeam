@@ -60,7 +60,7 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
     public void act(int... p) {
         if (!alive) return;
 
-        field.setBomb(x, y);
+//        field.setBomb(x, y);
     }
 
     public Direction getDirection() {
