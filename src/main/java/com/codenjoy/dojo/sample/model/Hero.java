@@ -58,9 +58,7 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
 
     @Override
     public void act(int... p) {
-        if (!alive) return;
-
-//        field.setBomb(x, y);
+        // Do nothing
     }
 
     public Direction getDirection() {
@@ -74,11 +72,6 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         if (direction != null) {
             int newX = direction.changeX(getX());
             int newY = direction.changeY(getY());
-
-//            if (field.isBomb(newX, newY)) {
-//                alive = false;
-//                field.removeBomb(newX, newY);
-//            }
 
             if (!field.isBarrier(newX, newY)) {
                 Point digit = field.getDigit(newX, newY);
@@ -96,14 +89,5 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
     @Override
     public Elements state(Player player, Object... alsoAtPoint) {
         return Elements.HERO;
-//        if (!isAlive()) {
-//            return Elements.DEAD_HERO;
-//        }
-//
-//        if (this == player.getHero()) {
-//            return Elements.HERO;
-//        } else {
-//            return Elements.OTHER_HERO;
-//        }
     }
 }

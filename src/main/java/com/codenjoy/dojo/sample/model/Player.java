@@ -62,15 +62,4 @@ public class Player {
     public Hero getHero() {
         return hero;
     }
-
-    /**
-     * Когда создается новая игра для пользователя, кто-то должен создать героя
-     * @param field борда
-     */
-    public void newHero(Field field) {
-        //Point pt = field.getFreeRandom();
-        hero = new Hero(3,0);
-        hero.init(field);
-    }
-
 }

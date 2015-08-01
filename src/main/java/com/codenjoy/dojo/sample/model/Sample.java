@@ -39,16 +39,7 @@ public class Sample implements Tickable, Field {
     public void tick() {
         for (Player player : players) {
             Hero hero = player.getHero();
-
             hero.tick();
-
-//            if (gold.contains(hero)) {
-//                gold.remove(hero);
-//                player.event(Events.WIN);
-//
-//                Point pos = getFreeRandom();
-//                gold.add(new Gold(pos.getX(), pos.getY()));
-//            }
         }
 
 //        for (Player player : players) {
@@ -66,8 +57,6 @@ public class Sample implements Tickable, Field {
 
     @Override
     public boolean isBarrier(int x, int y) {
-
-        // TODO
         Point pt = PointImpl.pt(x, y);
         return x > size - 1 || x < 0 || y < 0 || y > size - 1 || walls.contains(pt);
     }
@@ -101,13 +90,11 @@ public class Sample implements Tickable, Field {
 
     @Override
     public boolean isFree(int x, int y) {
-//        Point pt = PointImpl.pt(x, y);
+        Point pt = PointImpl.pt(x, y);
 
-        return true;
-//        !gold.contains(pt) &&
-//                !bombs.contains(pt) &&
-//                !walls.contains(pt) &&
-//                !getHeroes().contains(pt);
+        return !digits.contains(pt) &&
+                !walls.contains(pt) &&
+                !getHeroes().contains(pt);
     }
 
     public List<Hero> getHeroes() {
@@ -122,8 +109,6 @@ public class Sample implements Tickable, Field {
         if (!players.contains(player)) {
             players.add(player);
         }
-
-        player.newHero(this);
     }
 
     public void remove(Player player) {
