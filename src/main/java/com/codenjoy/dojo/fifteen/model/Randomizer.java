@@ -62,7 +62,7 @@ public class Randomizer {
             Collections.swap(result, i-1, dice.next(i));
     }
 
-    private boolean isSolvability(List<Elements> result) {
+    public boolean isSolvability(List<Elements> result) {
         int sum = 0;
         for (int i = 0; i < result.size(); i++) {
             if (result.get(i) == Elements.HERO) {
