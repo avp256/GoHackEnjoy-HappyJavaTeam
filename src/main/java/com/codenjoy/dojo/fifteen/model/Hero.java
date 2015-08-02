@@ -4,13 +4,15 @@ import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.Point;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Это реализация героя. Обрати внимание, что он имплементит {@see Joystick}, а значит может быть управляем фреймворком
  * Так же он имплементит {@see Tickable}, что значит - есть возможность его оповещать о каждом тике игры.
  */
 public class Hero extends PointImpl implements Joystick, Tickable, State<Elements, Player> {
-
+    private List<Digit> digits;
     private int moveCount;
     private Player player;
     private Field field;
@@ -22,6 +24,7 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         direction = null;
         alive = true;
         moveCount = 1;
+        digits = new LinkedList<Digit>();
     }
 
     public void setPlayer(Player player) {
@@ -32,6 +35,8 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
         super(xy);
         direction = null;
         alive = true;
+        moveCount = 1;
+        digits = new LinkedList<Digit>();
     }
 
     public void init(Field field) {
@@ -91,9 +96,14 @@ public class Hero extends PointImpl implements Joystick, Tickable, State<Element
                 move(newX, newY);
 
                 if (new DigitHandler().isRightPosition(digit)) {
-                    int number = 1 + Arrays.asList(DigitHandler.DIGITS).indexOf(digit);
-                    player.event(new Bonus(moveCount, number));
-                    moveCount = 1;
+
+                   if(!digits.contains(digit)){
+                       int number = 1 + Arrays.asList(DigitHandler.DIGITS).indexOf(digit);
+                       player.event(new Bonus(moveCount, number));
+                       moveCount = 1;
+                       digits.add(digit);
+                   }
+
                 }
             }
 
