@@ -10,9 +10,9 @@ public class Single implements Game {
 
     private Printer printer;
     private Player player;
-    private Sample game;
+    private Fifteen game;
 
-    public Single(Sample game, EventListener listener, PrinterFactory factory) {
+    public Single(Fifteen game, EventListener listener, PrinterFactory factory) {
         this.game = game;
         this.player = new Player(listener);
         this.printer = factory.getPrinter(game.reader(), player);

@@ -2,7 +2,6 @@ package com.codenjoy.dojo.sample.model;
 
 import com.codenjoy.dojo.services.PrinterFactory;
 import com.codenjoy.dojo.utils.TestUtils;
-import com.codenjoy.dojo.sample.services.Events;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.PrinterFactoryImpl;
@@ -21,9 +20,9 @@ import static org.mockito.Mockito.*;
  * Date: 17.12.13
  * Time: 4:47
  */
-public class SampleTest {
+public class FifteenTest {
 
-    private Sample game;
+    private Fifteen game;
     private Hero hero;
     private Dice dice;
     private EventListener listener;
@@ -46,7 +45,7 @@ public class SampleTest {
         LevelImpl level = new LevelImpl(board);
         //Hero hero = level.getHero().get(0);
 
-        game = new Sample(level, dice);
+        game = new Fifteen(level, dice);
         listener = mock(EventListener.class);
         player = new Player(listener);
         game.newGame(player);

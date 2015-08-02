@@ -15,7 +15,7 @@ import static org.mockito.Mockito.mock;
 /**
  * Created by Sanja on 15.02.14.
  */
-public class SamplePerormanceTest {
+public class FifteenPerormanceTest {
 
     @Test // TODO закончить как будет настроение :)
     public void test() {

@@ -3,17 +3,15 @@ package com.codenjoy.dojo.sample.model;
 import com.codenjoy.dojo.sample.services.Events;
 import com.codenjoy.dojo.services.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * О! Это самое сердце игры - борда, на которой все происходит.
  * Если какой-то из жителей борды вдруг захочет узнать что-то у нее, то лучше ему дать интефейс {@see Field}
- * Борда реализует интерфейс {@see Tickable} чтобы быть уведомленной о каждом тике игры. Обрати внимание на {Sample#tick()}
+ * Борда реализует интерфейс {@see Tickable} чтобы быть уведомленной о каждом тике игры. Обрати внимание на {Fifteen#tick()}
  */
-public class Sample implements Tickable, Field {
+public class Fifteen implements Tickable, Field {
     private List<Player> players;
 
     private List<Digit> digits;
@@ -23,7 +21,7 @@ public class Sample implements Tickable, Field {
     private final int size;
     private Dice dice;
 
-    public Sample(Level level, Dice dice) {
+    public Fifteen(Level level, Dice dice) {
         this.dice = dice;
 
         walls = level.getWalls();
@@ -133,7 +131,7 @@ public class Sample implements Tickable, Field {
 
     public BoardReader reader() {
         return new BoardReader() {
-            private int size = Sample.this.size;
+            private int size = Fifteen.this.size;
 
             @Override
             public int size() {
@@ -143,9 +141,9 @@ public class Sample implements Tickable, Field {
             @Override
             public Iterable<? extends Point> elements() {
                 List<Point> result = new LinkedList<Point>();
-                result.addAll(Sample.this.getWalls());
-                result.addAll(Sample.this.getHeroes());
-                result.addAll(Sample.this.getDigits());
+                result.addAll(Fifteen.this.getWalls());
+                result.addAll(Fifteen.this.getHeroes());
+                result.addAll(Fifteen.this.getDigits());
                 return result;
             }
         };

@@ -19,7 +19,7 @@ public class GameRunner implements GameType {
     public final static boolean SINGLE = false;
     private final Settings settings;
     private final Level level;
-    private Sample game;
+    private Fifteen game;
 
     public GameRunner() {
         settings = new SettingsImpl();
@@ -27,8 +27,8 @@ public class GameRunner implements GameType {
         level = new LevelImpl(new Randomizer().getRamdomMap());
     }
 
-    private Sample newGame() {
-        return new Sample(level, new RandomDice());
+    private Fifteen newGame() {
+        return new Fifteen(level, new RandomDice());
     }
 
     @Override
