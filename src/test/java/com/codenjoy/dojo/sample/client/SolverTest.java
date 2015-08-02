@@ -11,11 +11,6 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/**
- * User: sanja
- * Date: 05.10.13
- * Time: 11:56
- */
 public class SolverTest {
 
     private Dice dice;
@@ -31,40 +26,40 @@ public class SolverTest {
         return (Board) new Board().forString(board);
     }
 
-    @Test
-    public void should() {
-        asertAI("☼☼☼☼☼☼☼" +
-                "☼  x  ☼" +
-                "☼ $   ☼" +
-                "☼     ☼" +
-                "☼ ☺ $ ☼" +
-                "☼  ☻  ☼" +
-                "☼☼☼☼☼☼☼", Direction.UP);
-
-        asertAI("☼☼☼☼☼☼☼" +
-                "☼  x  ☼" +
-                "☼ $   ☼" +
-                "☼ ☺   ☼" +
-                "☼   $ ☼" +
-                "☼  ☻  ☼" +
-                "☼☼☼☼☼☼☼", Direction.UP);
-
-        asertAI("☼☼☼☼☼☼☼" +
-                "☼  x  ☼" +
-                "☼ ☺   ☼" +
-                "☼     ☼" +
-                "☼   $ ☼" +
-                "☼$ ☻  ☼" +
-                "☼☼☼☼☼☼☼", Direction.UP);
-
-        asertAI("☼☼☼☼☼☼☼" +
-                "☼ ☺x  ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼   $ ☼" +
-                "☼$ ☻  ☼" +
-                "☼☼☼☼☼☼☼", Direction.UP);
-    }
+//    @Test
+//    public void should() {
+//        asertAI("☼☼☼☼☼☼☼" +
+//                "☼  x  ☼" +
+//                "☼ $   ☼" +
+//                "☼     ☼" +
+//                "☼ ☺ $ ☼" +
+//                "☼  ☻  ☼" +
+//                "☼☼☼☼☼☼☼", Direction.UP);
+//
+//        asertAI("☼☼☼☼☼☼☼" +
+//                "☼  x  ☼" +
+//                "☼ $   ☼" +
+//                "☼ ☺   ☼" +
+//                "☼   $ ☼" +
+//                "☼  ☻  ☼" +
+//                "☼☼☼☼☼☼☼", Direction.UP);
+//
+//        asertAI("☼☼☼☼☼☼☼" +
+//                "☼  x  ☼" +
+//                "☼ ☺   ☼" +
+//                "☼     ☼" +
+//                "☼   $ ☼" +
+//                "☼$ ☻  ☼" +
+//                "☼☼☼☼☼☼☼", Direction.UP);
+//
+//        asertAI("☼☼☼☼☼☼☼" +
+//                "☼ ☺x  ☼" +
+//                "☼     ☼" +
+//                "☼     ☼" +
+//                "☼   $ ☼" +
+//                "☼$ ☻  ☼" +
+//                "☼☼☼☼☼☼☼", Direction.UP);
+//    }
 
     private void asertAI(String board, Direction expected) {
         String actual = ai.get(board(board));
