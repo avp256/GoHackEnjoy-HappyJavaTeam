@@ -103,13 +103,13 @@ public class FifteenTest {
 
         assertFalse(hero.isAlive());
         game.newGame(player);
-//
-//        assertE("******" +
-//                "*abcd*" +
-//                "*efgh*" +
-//                "*ijk+*" +
-//                "*mnol*" +
-//                "******");
+
+        assertE("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijk+*" +
+                "*mnol*" +
+                "******");
     }
 
     //движение вверх

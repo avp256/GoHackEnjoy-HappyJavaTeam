@@ -2,6 +2,7 @@ package com.codenjoy.dojo.sample.model;
 
 import com.codenjoy.dojo.sample.model.Elements;
 import com.codenjoy.dojo.sample.model.LevelImpl;
+import com.codenjoy.dojo.services.Dice;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,7 +21,7 @@ public class Randomizer {
                     "*%s*" +
                     "******";
 
-    public String getRamdomMap() {
+    public String getRamdomMap(Dice dice) {
         String randomElements = getRandomElements();
 
         return String.format(TEMPLATE,

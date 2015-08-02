@@ -12,26 +12,20 @@ import java.util.List;
  * Борда реализует интерфейс {@see Tickable} чтобы быть уведомленной о каждом тике игры. Обрати внимание на {Fifteen#tick()}
  */
 public class Fifteen implements Tickable, Field {
+    private final Level level;
     private List<Player> players;
 
     private List<Digit> digits;
     private List<Wall> walls;
     List<Hero> heros;
 
-    private final int size;
+    private int size;
     private Dice dice;
 
     public Fifteen(Level level, Dice dice) {
+        this.level = level;
         this.dice = dice;
-
-        walls = level.getWalls();
-        digits = level.getDigits();
         size = level.getSize();
-        heros = level.getHero();
-        for (Hero hero : heros) {
-            hero.init(this);
-        }
-
         players = new LinkedList<>();
     }
 
@@ -111,9 +105,14 @@ public class Fifteen implements Tickable, Field {
     }
 
     public void newGame(Player player) {
+        walls = level.getWalls();
+        digits = level.getDigits();
+        size = level.getSize();
+        heros = level.getHero();
         if (!players.contains(player)) {
             player.setHero(heros.get(0));
             players.add(player);
+            player.hero.init(this);
         }
     }
 

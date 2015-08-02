@@ -18,16 +18,16 @@ public class GameRunner implements GameType {
 
     public final static boolean SINGLE = false;
     private final Settings settings;
-    private final Level level;
+    private Level level;
     private Fifteen game;
 
     public GameRunner() {
         settings = new SettingsImpl();
         new Scores(0, settings);
-        level = new LevelImpl(new Randomizer().getRamdomMap());
     }
 
     private Fifteen newGame() {
+        level = new LevelImpl(new Randomizer().getRamdomMap(new RandomDice()));
         return new Fifteen(level, new RandomDice());
     }
 
