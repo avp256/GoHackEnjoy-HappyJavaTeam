@@ -19,7 +19,11 @@ public class Randomizer {
                     "*%s*" +
                     "******";
 
+    private Dice dice;
+
     public String getRamdomMap(Dice dice) {
+        this.dice = dice;
+
         String randomElements = getRandomElements();
 
         return String.format(TEMPLATE,
@@ -47,10 +51,15 @@ public class Randomizer {
         result.add(Elements.HERO);
 
         do {
-            Collections.shuffle(result);
+            shufleList(result);
         } while (!isSolvability(result));
 
         return result;
+    }
+
+    private void shufleList(List<Elements> result) {
+        for (int i=result.size(); i>1; i--)
+            Collections.swap(result, i-1, dice.next(i));
     }
 
     private boolean isSolvability(List<Elements> result) {

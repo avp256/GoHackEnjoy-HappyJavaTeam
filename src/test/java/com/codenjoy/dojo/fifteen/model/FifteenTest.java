@@ -29,23 +29,19 @@ public class FifteenTest {
         dice = mock(Dice.class);
     }
 
-    private void dice(int...ints) {
-        OngoingStubbing<Integer> when = when(dice.next(anyInt()));
-        for (int i : ints) {
-            when = when.thenReturn(i);
+    private void dice() {
+        for (int i = 16; i > 0; i--) {
+            when(dice.next(i)).thenReturn(i - 1);
         }
     }
 
     private void givenFl(String board) {
         LevelImpl level = new LevelImpl(board);
-        //Hero hero = level.getHero().get(0);
 
         game = new Fifteen(level, dice);
         listener = mock(EventListener.class);
         player = new Player(listener);
         game.newGame(player);
-//        player.hero = hero;
-//        hero.init(game);
         this.hero = game.getHeroes().get(0);
     }
 
@@ -215,5 +211,18 @@ public class FifteenTest {
                 "*ijkl*" +
                 "*mno+*" +
                 "******");
+    }
+
+    // тест рандомной инициализации
+    @Test
+    public void testRandomInitialization() {
+        dice();
+        String ramdomMap = new Randomizer().getRamdomMap(dice);
+        assertEquals("******" +
+                "*abcd*" +
+                "*efgh*" +
+                "*ijkl*" +
+                "*mno+*" +
+                "******", ramdomMap);
     }
 }
