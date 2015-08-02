@@ -3,6 +3,7 @@ package com.codenjoy.dojo.sample.model;
 import com.codenjoy.dojo.sample.services.Events;
 import com.codenjoy.dojo.services.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,6 @@ public class Fifteen implements Tickable, Field {
 
     private List<Digit> digits;
     private List<Wall> walls;
-    List<Hero> heros;
 
     private int size;
     private Dice dice;
@@ -101,19 +101,23 @@ public class Fifteen implements Tickable, Field {
     }
 
     public List<Hero> getHeroes() {
-        return heros;
+        List<Hero> result = new ArrayList<>();
+        for (Player player : players) {
+            result.add(player.getHero());
+        }
+        return result;
     }
 
     public void newGame(Player player) {
         walls = level.getWalls();
         digits = level.getDigits();
         size = level.getSize();
-        heros = level.getHero();
+        List<Hero> heros = level.getHero();
         if (!players.contains(player)) {
-            player.setHero(heros.get(0));
             players.add(player);
-            player.hero.init(this);
         }
+        player.setHero(heros.get(0));
+        player.hero.init(this);
     }
 
     public void remove(Player player) {
