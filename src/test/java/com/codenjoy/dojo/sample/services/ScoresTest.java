@@ -10,11 +10,6 @@ import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
-/**
- * User: sanja
- * Date: 05.06.13
- * Time: 20:35
- */
 public class ScoresTest {
     private static final int MOVE_COUNT = 2;
     private static final int NUMBER = 5;
@@ -60,36 +55,4 @@ public class ScoresTest {
 
         Assert.assertEquals(250 + winScore, scores.getScore());
     }
-
-//    @Test
-//    public void shouldCollectScores() {
-//        scores = new Scores(140, settings);
-//
-//        win();  //+30
-//        win();  //+30
-//        win();  //+30
-//        win();  //+30
-//
-//        loose(); //-100
-//
-//        Assert.assertEquals(140 + 4 * winScore - loosePenalty, scores.getScore());
-//    }
-//
-//    @Test
-//    public void shouldStillZeroAfterDead() {
-//        loose();    //-100
-//
-//        Assert.assertEquals(0, scores.getScore());
-//    }
-//
-//    @Test
-//    public void shouldClearScore() {
-//        win();    // +30
-//
-//        scores.clear();
-//
-//        Assert.assertEquals(0, scores.getScore());
-//    }
-
-
 }
